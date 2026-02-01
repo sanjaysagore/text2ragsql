@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  AWS_REGION: us-east-1
+  AWS_REGION: ap-south-1
   ECR_REPOSITORY: rag-text-to-sql-server
   LAMBDA_FUNCTION: rag-text-to-sql-serverless
 
