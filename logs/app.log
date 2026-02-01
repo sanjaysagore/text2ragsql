@@ -1,0 +1,146 @@
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1260] - Storage directories initialized: \tmp\uploads, \tmp\cached_chunks
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1262] - ============================================================
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1263] - Starting Multi-Source RAG + Text-to-SQL API...
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1264] - ============================================================
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1265] - Phase 0: Foundation Setup - COMPLETE
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1266] - Phase 1: Document RAG MVP - COMPLETE
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1267] - Phase 2: Text-to-SQL Foundation - COMPLETE
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1268] - Phase 3: Query Routing - COMPLETE
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1269] - Phase 4: Evaluation & Monitoring - COMPLETE
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1270] - Phase 5: Polish & Documentation - COMPLETE
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1271] - Phase 6: Docker Deployment - COMPLETE
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1272] - ============================================================
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1273] - ALL PHASES COMPLETE - PRODUCTION READY!
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1274] - ============================================================
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1280] - Initializing OPIK monitoring...
+2026-01-24 11:20:19 - rag_app - WARNING - [main.py:1307] - Failed to initialize OPIK: Network error occurred: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)
+2026-01-24 11:20:19 - rag_app - INFO - [main.py:1314] - Initializing query cache service (Redis)...
+2026-01-24 11:20:23 - rag_app - INFO - [main.py:1324] - Query cache service initialized but disabled (credentials not configured).
+2026-01-24 11:20:23 - rag_app - INFO - [main.py:1325] - App will continue without query caching. Set UPSTASH_REDIS_URL and UPSTASH_REDIS_TOKEN to enable.
+2026-01-24 11:20:23 - rag_app - INFO - [main.py:1333] - Initializing Document RAG services...
+2026-01-24 11:20:34 - rag_app - ERROR - [main.py:1343] - Failed to initialize RAG services: Failed to connect to Pinecone index: HTTPSConnectionPool(host='api.pinecone.io', port=443): Max retries exceeded with url: /indexes (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)')))
+Traceback (most recent call last):
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\util\ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python312\Lib\ssl.py", line 1041, in _create
+    self.do_handshake()
+  File "C:\Program Files\Python312\Lib\ssl.py", line 1319, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Sanjay\RAGTraining\text2sqlrag-project\app\services\vector_service.py", line 43, in connect_to_index
+    existing_indexes = self.pc.list_indexes()
+                       ^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\pinecone.py", line 787, in list_indexes
+    return self.db.index.list()
+           ^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\utils\require_kwargs.py", line 26, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\db_control\resources\sync\index.py", line 239, in list
+    response = self._index_api.list_indexes()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\openapi_support\endpoint.py", line 102, in __call__
+    return self.callable(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\core\openapi\db_control\api\manage_indexes_api.py", line 1345, in __list_indexes
+    return cast(IndexList | ApplyResult[IndexList], self.call_with_http_info(**kwargs))
+                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\openapi_support\endpoint.py", line 134, in call_with_http_info
+    return self.api_client.call_api(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\openapi_support\api_client.py", line 320, in call_api
+    return self.__call_api(
+           ^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\openapi_support\api_client.py", line 173, in __call_api
+    response_data = self.request(
+                    ^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\openapi_support\api_client.py", line 374, in request
+    return self.rest_client.GET(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\openapi_support\rest_utils.py", line 75, in GET
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\pinecone\openapi_support\rest_urllib3.py", line 249, in request
+    r = self.pool_manager.request(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\_request_methods.py", line 135, in request
+    return self.request_encode_url(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\_request_methods.py", line 182, in request_encode_url
+    return self.urlopen(method, url, **extra_kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\poolmanager.py", line 457, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 871, in urlopen
+    return self.urlopen(
+           ^^^^^^^^^^^^^
+  [Previous line repeated 2 more times]
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "d:\Sanjay\RAGTraining\text2sqlrag-project\.venv\Lib\site-packages\urllib3\util\retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.pinecone.io', port=443): Max retries exceeded with url: /indexes (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Sanjay\RAGTraining\text2sqlrag-project\app\main.py", line 1336, in initialize_services
+    vector_service.connect_to_index()
+  File "D:\Sanjay\RAGTraining\text2sqlrag-project\app\services\vector_service.py", line 66, in connect_to_index
+    raise Exception(f"Failed to connect to Pinecone index: {str(e)}")
+Exception: Failed to connect to Pinecone index: HTTPSConnectionPool(host='api.pinecone.io', port=443): Max retries exceeded with url: /indexes (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1010)')))
+2026-01-24 11:20:34 - rag_app - WARNING - [main.py:1344] - Document RAG features will be unavailable.
+2026-01-24 11:20:34 - rag_app - INFO - [main.py:1349] - Initializing Text-to-SQL service...
+2026-01-24 11:20:34 - rag_app.sql_service - INFO - [sql_service.py:68] - Configuring SQL LLM with deterministic settings: temperature=0.0, top_p=0.1, seed=42
+2026-01-24 11:20:34 - rag_app.sql_service - INFO - [sql_service.py:115] - Using Pinecone for SQL Agent memory (index: vanna-sql-training)
+2026-01-24 11:20:34 - rag_app.sql_service - INFO - [sql_service.py:135] - ✓ Vanna 2.0 Agent initialized successfully
+2026-01-24 11:20:34 - rag_app - INFO - [main.py:1351] - Training Vanna on database schema and examples...
+2026-01-24 11:20:34 - rag_app.sql_service - INFO - [sql_service.py:342] - Preparing schema context for Vanna 2.0...
+2026-01-24 11:20:34 - rag_app.sql_service - INFO - [sql_service.py:348] - ✓ Schema context prepared for Vanna 2.0 Agent!
+2026-01-24 11:20:34 - rag_app - INFO - [main.py:1353] - ✓ Text-to-SQL service initialized and trained!
+2026-01-24 11:20:34 - rag_app - INFO - [main.py:1364] - Initializing document cache service (S3/local)...
+2026-01-24 11:20:35 - rag_app.cache_service - INFO - [cache_service.py:48] - Using S3 storage (bucket: my-rag-cache-bucket-1)
+2026-01-24 11:20:35 - rag_app - INFO - [main.py:1366] - ✓ Document cache service initialized!
+2026-01-24 11:20:35 - rag_app - INFO - [main.py:1371] - ============================================================
+2026-01-24 11:20:35 - rag_app - INFO - [main.py:1372] - API is ready!
+2026-01-24 11:20:35 - rag_app - INFO - [main.py:1373] - ============================================================

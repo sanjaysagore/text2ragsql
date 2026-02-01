@@ -1,1 +1,1 @@
-# text2ragsql
+# text2rag
